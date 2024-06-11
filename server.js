@@ -1,3 +1,9 @@
+/* TO DO
+2. Process received messages through LLM
+3. Obtain stream metadata
+4. Obstain stream audio / video (OBS? Twitch API?)
+*/
+
 const tmi = require("tmi.js");
 
 const client = new tmi.Client({
@@ -7,21 +13,24 @@ const client = new tmi.Client({
     channels: ["a_blind_ty"],
     identity: {
         username: "watta_viewer",
-        password: process.env.TWITCH_OAUTH_TOKEN,
+        password: process.env.TWITCH_OAUTH_ACCESS_TOKEN,
     },
 });
 
+client.on("message", onMessageHandler);
+client.on("connected", onConnectedHandler);
+
 client.connect();
 
-client.on("message", (channel, tags, message, self) => {
+function onMessageHandler(channel, tags, message, self) {
     if (self) return;
-
-    // The received message is in the 'message' binding
-    // HERE is where we send to GPT, await a response, and then reply
-    nextMessage = "Canned response, I'm not thinking straight (yet)";
-    // How do we incorporate the ongoing stream video and audio?
-    // How do we get the stream metadata (game being played, etc.)?
 
     console.log(`${tags["display-name"]}: ${message} in ${channel}`);
     console.log("All tags:", Object.keys(tags));
-});
+
+    client.say(channel, `@${tags.username}. I think, therefore I am.`);
+}
+
+function onConnectedHandler(addr, port) {
+    console.log(`Connected. Hello, world!`);
+}
