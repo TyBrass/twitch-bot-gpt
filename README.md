@@ -1,4 +1,4 @@
-# watta_viewer
+# Twitch Bot / GPT
 
 Twitch chatbot powered by GPT-4o
 
