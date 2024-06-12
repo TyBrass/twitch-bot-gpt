@@ -2,38 +2,31 @@
 
 Twitch chatbot powered by GPT-4o
 
-Hosted on Heroku
+Currently very, very basic - just responds to chat messages in a very generic way
 
 ## Next Steps
 
 ### Bot
 
--   Train/fine-tune: https://platform.openai.com/docs/api-reference/fine-tuning/create
--   Join based on database channels
+-   Obtain stream metadata (Twitch API)
+-   Set up proper OAuth flow, and redirection URI
+-   Fine-tune model
+-   Messaging logic (currently responds to every chat message). Need to determine which messages warrant a response, and how often to send messages unprompted
 
-### Web Frontend - Registration, Controls/Preferences
+### Web Frontend
 
--   Web app
+-   Web app for registration and controls/preferences
 -   Users can register their channel to use the app - while registered,
     Watta watches the channel
     -   Watta can be enabled/disabled in-chat or in-dashboard without cancelling subscription
     -   Watta can be canelled in frontend, removing channel from Watta's list
--   Dashboard presents watta controls: suggested questions for Watta, Watta behaviour options, Watta frequency
+-   Dashboard presents Watta controls: suggested questions for Watta, Watta behaviour options, Watta frequency
 -   When a user registers or deregisters, the frontend updates the database holding the list of registered channels
--   ? How should Watta watch that database? Polling? Or does an update also trigger a callback of sorts in the bot script?
+    -   User registration/deregistration on the frontend should immediately be reflected in bot
+-   A real database, rather than the current JSON object
 
-### OBS Studio Plugin (will this also work for Streamlabs?) \*FUTURE
+### OBS Studio Plugin
 
 -   On starting a stream, also feed video and audio to web server
 -   Video/audio are integrated into GPT-4o inputs
     -   Probably some finagling on the server to get this done - need to group the inputs
-
-## To-Do
-
-1. Tweak model so it's chill
-2. Obtain stream metadata
-3. Obstain stream audio / video (OBS? Twitch API?)
-4. Stop using twitchdeveloper.com (or whatever) sample access tokens – set up
-   actual OAuth flow
-5. It shouldn't respond to EVERY message – need osme logic to prevent spamming
-   but also to determine when to send messages unprompted
