@@ -3,14 +3,15 @@
     "version": "1.0.0",
     "main": "index.js",
     "scripts": {
-        "start": "node server",
-        "dev": "node --env-file=.env server",
+        "start": "node index",
+        "dev": "node --env-file=.env index",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "",
     "license": "ISC",
     "description": "",
     "dependencies": {
+        "express": "^4.19.2",
         "openai": "^4.50.0",
         "tmi.js": "^1.8.5"
     }
