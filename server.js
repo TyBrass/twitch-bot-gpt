@@ -1,5 +1,5 @@
 /* TO DO
-2. Process received messages through LLM
+1. Tweak model so it's chill
 3. Obtain stream metadata
 4. Obstain stream audio / video (OBS? Twitch API?)
 5. Stop using twitchdeveloper.com (or whatever) sample access tokens – set up 
